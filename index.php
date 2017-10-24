@@ -1,19 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Easy Log in form - Bootsnipp.com</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="files/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <style type="text/css">
-    /*    --------------------------------------------------
+<?php
+  session_start();
+   if(isset($_SESSION['username'])){
+       session_destroy();
+    }	   
+?>
+<html>
+<link href="files/bootstrap.min.css" rel="stylesheet">
+   <script src="files/jquery.min.js"></script>
+   <script src="files/bootstrap.min.js"></script>
+   <script src="files/glyphicons-halflings-regular.svg"></script>
+   <script src="files/glyphicons-halflings-regular.ttf"></script>
+   <script src="files/glyphicons-halflings-regular.eot"></script>
+   <script src="files/glyphicons-halflings-regular.woff"></script>
+<style>
+/*    --------------------------------------------------
 	:: Login Section
 	-------------------------------------------------- */
-
-    body{
-        background: #ffcc99
-;
-    }
 #login {
     padding-top: 50px
 }
@@ -41,7 +43,7 @@
     user-select: none;
 }
 #login .checkbox.show:before {
-    content: '\e013';
+    
     color: #1fa67b;
     font-size: 17px;
     margin: 1px 0 0 3px;
@@ -102,61 +104,58 @@
 #footer a {
     color: inherit;
 }
-    </style>
-    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="files/bootstrap.min.js"></script>
-    <script type="text/javascript">
-        window.alert = function(){};
-        var defaultCSS = document.getElementById('bootstrap-css');
-        function changeCSS(css){
-            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />'); 
-            else $('head > link').filter(':first').replaceWith(defaultCSS); 
-        }
-        $( document ).ready(function() {
-          var iframe_height = parseInt($('html').height()); 
-          window.parent.postMessage( iframe_height, 'http://bootsnipp.com');
-        });
-    </script>
-</head>
+</style>
 
-<!--THE MEAT IS HERE-->
-<body>
-    <div align="center">
-    <img src="images/lib_pic.jpg" alt="library Icon" width="1100" height="300">
-	<section id="login">
+<script>
+function showPassword() {
+    
+    var key_attr = $('#key').attr('type');
+    
+    if(key_attr != 'text') {
+        
+        $('.checkbox').addClass('show');
+        $('#key').attr('type', 'text');
+        
+    } else {
+        
+        $('.checkbox').removeClass('show');
+        $('#key').attr('type', 'password');
+        
+    }
+    
+}
+</script>
+   
+<section id="login">
     <div class="container">
     	<div class="row">
     	    <div class="col-xs-12">
         	    <div class="form-wrap">
-                <h1>Staff Email Log in</h1>
-                    <form role="form" action="checklogin.php" method="post" id="login-form" autocomplete="off">
+                <h1>Log in with your username</h1>
+                    <form role="form"  method="post" id="login-form" autocomplete="off" action="checklogin.php">
                         <div class="form-group">
-                            <label for="email" class="sr-only">Email</label>
-                            <input type="email" name="email" id="email" class="form-control" placeholder="somebody@example.com">
+                            <label for="username" class="sr-only">Username</label>
+                            <input type="text" name="username" id="username" class="form-control" placeholder="Enter your name...">
                         </div>
                         <div class="form-group">
                             <label for="key" class="sr-only">Password</label>
-                            <input type="password" name="key" id="key" class="form-control" placeholder="Password">
+                            <input type="password" name="password" id="key" class="form-control" placeholder="Enter the Password...">
+                        </div>
+                        <div class="checkbox">
+					
+                            
+                            <span class="label"><input type="checkbox" onclick="showPassword()" >Show password</span>
                         </div>
                         <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Log in">
-                        <div class="checkbox">
-                            <span class="character-checkbox" onclick="showPassword()"></span>
-                            <span class="label">Show password</span>
-                        </div>
-                    </form> <!-- End of ogin form -->
-                        <div id= "patron_staff_options">
-                            <h1>Not a staff? Patrons login <a href ="patronindex.html">here</a>
-                            <h1>Need an account? <a href="faculty.html">Sign Up</a></h1>
-                        </div>
+                        <input type="hidden" id="check123" name="whois" value="teacher"/>
+					</form>
                     <a href="javascript:;" class="forget" data-toggle="modal" data-target=".forget-modal">Forgot your password?</a>
                     <hr>
         	    </div>
     		</div> <!-- /.col-xs-12 -->
     	</div> <!-- /.row -->
     </div> <!-- /.container -->
-</div> <!--center align div-->
 </section>
-
 
 <div class="modal fade forget-modal" tabindex="-1" role="dialog" aria-labelledby="myForgetModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-sm">
@@ -184,30 +183,10 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <p>Page © - 2017</p>
-                <p>Powered by <strong><a href="http://www.facebook.com/tavo.qiqe.lucero" target="_blank">Wei Industries</a></strong></p>
-            </div>
+               <!-- <p>Page © - 2014</p>
+                <p>Powered by <strong><a href="http://www.facebook.com/tavo.qiqe.lucero" target="_blank">TavoQiqe</a></strong></p>
+         -->   </div>
         </div>
     </div>
 </footer>
-	<script type="text/javascript">
-	function showPassword() {
-    
-    var key_attr = $('#key').attr('type');
-    
-    if(key_attr != 'text') {
-        
-        $('.checkbox').addClass('show');
-        $('#key').attr('type', 'text');
-        
-    } else {
-        
-        $('.checkbox').removeClass('show');
-        $('#key').attr('type', 'password');
-        
-    }
-    
-}
-	</script>
-</body>
 </html>

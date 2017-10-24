@@ -16,20 +16,16 @@ if ($conn->connect_error) {
 	if( isset($_POST['rollno']) &&
 	    isset($_POST['fullname']) && 
         isset($_POST['email']) && 
-        isset($_POST['department']) &&
-        isset($_POST['semester']) &&
         isset($_POST['password']))
 	{
 		$rollno = $_POST['rollno'];
 		$name = $_POST['fullname'];
 		$email = $_POST['email'];
-		$department = $_POST['department'];
-		$semester = $_POST['semester'];
 		$password = md5($_POST['password']);
 		
 		if( !empty($rollno) &&
 		!empty($name) && 
-		!empty ($email) && !empty($department) && !empty($semester) &&!empty($password))
+		!empty ($email) && !empty($password))
 		{
 				$qry = "select roll_no from students where email = '$email'";
 				$result = mysqli_query( $conn,$qry );
@@ -41,7 +37,7 @@ if ($conn->connect_error) {
 				}
 				else
 				{
-					$qry = "insert into students values('$rollno','$name','$department','$semester','$email','$password')";
+					$qry = "insert into students values('$rollno','$name','$email','$password')";
 					
 					
 					if(mysqli_query($conn,$qry ))

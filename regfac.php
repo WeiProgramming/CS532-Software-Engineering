@@ -1,8 +1,8 @@
 <?php
 require('session.php');
-if(!isset($_SESSION['username'])){
-header("location:index.php");
-}
+// if(!isset($_SESSION['username'])){
+// header("location:index.php");
+// }
 
 	require 'serverinfo.php';
 	
@@ -38,7 +38,7 @@ if ($conn->connect_error) {
 				if( mysqli_num_rows( $query_run ) == 1)
 				{
 					echo 'The facultyID. ' . $facultyID . ' already exists.';
-					echo "Go to <a href=index.php> Home</a> for transaction.";
+					echo "Go to <a href=index.html> Home</a> for transaction.";
 				}
 				else
 				{
