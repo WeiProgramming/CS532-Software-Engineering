@@ -38,7 +38,7 @@ $_SESSION['password'] = $mypassword;
 header("location:members.php");
 }
 else {
-echo '<a href ="index.php" >Wrong Username or Password,Click to go back</a>';
+echo '<a href ="index.html" >Wrong Username or Password,Click to go back</a>';
 
 }
 

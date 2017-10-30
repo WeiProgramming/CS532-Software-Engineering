@@ -1,8 +1,8 @@
 <?php
 require('session.php');
-// if(!isset($_SESSION['username'])){
-// header("location:index.php");
-// }
+if(!isset($_SESSION['username'])){
+header("location:index.html");
+}
 
 	require 'serverinfo.php';
 	
