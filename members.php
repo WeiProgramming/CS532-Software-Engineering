@@ -80,6 +80,20 @@ a:active {
 <br/>
 </p>
 <br><br><br>
+
+<p align="center">
+  <!-- this is a static int change this -->
+<a href="payment_screen.php"><button type="button" class="btn  btn-danger ">Pay Late Fee: 
+  <?php 
+    //replace this with a call to the transaction (new) database
+    $fee = 500;
+    $formattedFee = substr_replace($fee,'.',-2,0);
+
+    $_SESSION['lateFee'] = $fee;
+    echo '$'.$formattedFee;
+  ?></button></a>
+<p/>
+
 <p align="center">
 <a href="view_cart.php"><button type="button" class="btn  btn-success ">View Cart</button></a>
 <p/>
@@ -109,5 +123,7 @@ a:active {
 <p align="center">
 <a href="logout.php"><button type="button" class="btn btn-danger"> Logout</button></a>
 </p>
+
+
 </body>
 </html>
