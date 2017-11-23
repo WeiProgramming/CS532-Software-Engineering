@@ -80,13 +80,29 @@ a:active {
 <br/>
 </p>
 <br><br><br>
+<p align="center">
+<form action = "getFee.php" method = "POST" >
+  <label for = "rollno">Please Input Your Roll Number</label>
+  <input type="text" name="rollno">
+  <button type = "submit"> Check Fee</button>
+</form>
+</p>
 
 <p align="center">
+
   <!-- this is a static int change this -->
 <a href="payment_screen.php"><button type="button" class="btn  btn-danger ">Pay Late Fee: 
   <?php 
     //replace this with a call to the transaction (new) database
-    $fee = 500;
+  if(isset($_SESSION['DBfee'])){
+    $fee = $_SESSION['DBfee'];
+  }
+  else{
+    $fee = 000;
+  }
+
+
+
     $formattedFee = substr_replace($fee,'.',-2,0);
 
     $_SESSION['lateFee'] = $fee;
@@ -99,15 +115,10 @@ a:active {
 <p/>
 
 <p align="center">
-<a href="transaction.php"><button type="button" class="btn btn-warning" data-toggle="collapse" data-target="stud_transaction">Student Transaction</button>
-<a href="student_return.php"><button type="button" class="btn btn-warning" data-toggle="collapse" data-target="stud_transaction">Student Book Return</button>
+<a href="transaction.php"><button type="button" class="btn btn-warning" data-toggle="collapse" data-target="stud_transaction">Patron Transaction</button>
+<a href="student_return.php"><button type="button" class="btn btn-warning" data-toggle="collapse" data-target="stud_transaction">Patron Book Return</button>
 </p>
 
-<br><br><br>
-<p align="center">
-<a href="transaction1.php"><button type="button" class="btn btn-warning" data-toggle="collapse" data-target="faculty_transaction">Faculty Transaction</button></a>
-<a href="faculty_return.php"><button type="button" class="btn btn-warning" data-toggle="collapse" data-target="faculty_transaction">Faculty Book Return</button></a>
-</p>
 
 <br><br>
 <p align="center">
