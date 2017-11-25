@@ -85,18 +85,15 @@ a:active {
 <p/>
 
 <p align="center">
-<a href="students.html"><button type="button" class="btn btn-info">New Student Entry</button></a>
+<a href="students.html"><button type="button" class="btn btn-info">New Patron Entry</button></a>
 <p/>
 <p align="center">
-<a href="transaction.php"><button type="button" class="btn btn-warning" data-toggle="collapse" data-target="stud_transaction">Student Transaction</button>
+<a href="transaction.php"><button type="button" class="btn btn-warning" data-toggle="collapse" data-target="stud_transaction">Patron Transaction</button>
 </p>
 
 <br><br><br>
 <p align="center">
-<a href="faculty.html"><button type="button" class="btn btn-info">New Faculty Entry</button></a>
-</p>
-<p align="center">
-<button type="button" class="btn btn-warning" data-toggle="collapse" data-target="faculty_transaction">Faculty Transaction</button>
+<button type="button" class="btn btn-warning" data-toggle="collapse" data-target="faculty_transaction">Patron Transaction</button>
 </p>
 <br><br>
 <p align="center">

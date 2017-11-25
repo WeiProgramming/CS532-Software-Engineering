@@ -39,7 +39,8 @@ while($row = mysqli_fetch_array($result)){
 	}
 	else{
 		$_SESSION['DBfee'] = 000;
-		echo '<a href ="members.php" >Congrats you have no fees to pay!,Click to go back to your user page</a>';
+		header("location:members.php");  
+		// echo '<a href ="members.php" >Congrats you have no fees to pay!,Click to go back to your user page</a>';
 	}
 }
 

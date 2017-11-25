@@ -82,6 +82,7 @@ a:active {
 <br><br><br>
 <p align="center">
 <form action = "getFee.php" method = "POST" >
+  <h3 align="center">CHECK HOW MUCH YOU OWE!</h3>
   <label for = "rollno">Please Input Your Roll Number</label>
   <input type="text" name="rollno">
   <button type = "submit"> Check Fee</button>
@@ -89,10 +90,8 @@ a:active {
 </p>
 
 <p align="center">
-
-  <!-- this is a static int change this -->
-<a href="payment_screen.php"><button type="button" class="btn  btn-danger ">Pay Late Fee: 
-  <?php 
+    <!-- this is a static int change this -->
+  You Owe: <?php 
     //replace this with a call to the transaction (new) database
   if(isset($_SESSION['DBfee'])){
     $fee = $_SESSION['DBfee'];
@@ -100,15 +99,24 @@ a:active {
   else{
     $fee = 000;
   }
-
-
-
     $formattedFee = substr_replace($fee,'.',-2,0);
 
     $_SESSION['lateFee'] = $fee;
     echo '$'.$formattedFee;
-  ?></button></a>
-<p/>
+  ?>
+</p>
+<form  align = "center" style = "margin-bottom: 1%" action="/your-server-side-code" method="POST">
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="pk_test_dUhGuWk6DyqT8Rqwm6STDHqd"
+    data-amount=<?php echo $fee?>
+    data-name="topnotchlibrary.com"
+    data-description="Pay Your Fee"
+    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+    data-locale="auto"
+    data-zip-code="true">
+  </script>
+</form>
 
 <p align="center">
 <a href="view_cart.php"><button type="button" class="btn  btn-success ">View Cart</button></a>
