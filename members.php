@@ -105,17 +105,8 @@ a:active {
     echo '$'.$formattedFee;
   ?>
 </p>
-<form  align = "center" style = "margin-bottom: 1%" action="/your-server-side-code" method="POST">
-  <script
-    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="pk_test_dUhGuWk6DyqT8Rqwm6STDHqd"
-    data-amount=<?php echo $fee?>
-    data-name="topnotchlibrary.com"
-    data-description="Pay Your Fee"
-    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-    data-locale="auto"
-    data-zip-code="true">
-  </script>
+<form  align = "center" style = "margin-bottom: 1%" action="payment_screen.php" method="POST">
+  <input type="submit" name="fee-btn" class = "btn btn-success" value="Pay Fee">
 </form>
 
 <p align="center">
