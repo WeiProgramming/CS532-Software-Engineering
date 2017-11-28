@@ -25,5 +25,5 @@ if(isset($_SESSION["books"]))
 	}
   }	
 session_destroy();
-header("location:index.php");
+header("location:patronindex.html");
 ?>
